@@ -1,19 +1,14 @@
 from stable_baselines3 import PPO
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.callbacks import EvalCallback
-from rl.envs.drone_env import DroneEnv  # same path you use in train_ppo.py
+from rl.envs.sim_drone_env import SimDroneEnv
 
 
 def make_env(target_altitude: float = 5.0, max_episode_steps: int = 250):
-    """
-    Environment factory for HPC runs.
-    NOTE: This assumes DroneEnv can run headless on HPC. If DroneEnv
-    requires PX4 SITL, you will later want a pure-sim env for HPC.
-    """
-    env = DroneEnv(target_altitude=target_altitude,
-                   max_episode_steps=max_episode_steps)
-    env = Monitor(env)
+    env = SimDroneEnv(target_altitude=target_altitude,
+                      max_episode_steps=max_episode_steps)
     return env
+
 
 
 def main():
