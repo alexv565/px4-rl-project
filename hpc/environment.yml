@@ -1,0 +1,17 @@
+name: rl-drone
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - gym==0.26.2
+  - pip:
+      - stable-baselines3==2.3.0
+      - torch
+      - tensorboard
+      - tqdm
