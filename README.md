@@ -1,17 +1,8 @@
-# PX4 + Gazebo Reinforcement Learning Project
+## Current Status
 
-## Environment Versions
-- Ubuntu: 22.04 (Docker container)
-- PX4: (current branch)
-- Gazebo: Harmonic
-- Python: 3.x
-- PyTorch: 2.3.0 (CPU)
-- SB3: latest
-- MAVSDK: 2.x
+- Docker image with Ubuntu 22.04, PX4 SITL, Gazebo, MAVSDK, and Stable-Baselines3 builds successfully.
+- Can run PX4 SITL with `make px4_sitl gz_x500` inside the container.
+- `scripts/hover_demo.py` connects via MAVSDK and performs: arm → takeoff → hover → land.
+- `rl/envs/drone_env.py` implements a Gymnasium environment on top of PX4 + MAVSDK.
+- `rl/train/train_ppo.py` runs a PPO training loop against DroneEnv and saves a test model.
 
-## Container Commands
-docker build --no-cache -t px4-rl:latest .
-docker run --rm -it px4-rl:latest /bin/bash
-
-## Next Steps
-- Step 3: Write MAVSDK takeoff script.
